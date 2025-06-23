@@ -12,5 +12,4 @@ RUN uv sync
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-# Presuming there is a `my_app` command provided by the project
 CMD ["uv", "run", "main.py"]
