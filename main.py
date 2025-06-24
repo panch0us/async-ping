@@ -191,13 +191,13 @@ async def monitor_hosts():
     timeout  = config['ping_timeout']
     count    = config['ping_count']
     
-    logger.info(f"Старт теста! Количество хостов = {len(hosts)}, интервал = {interval} сек.")
+    logger.info(f"  Старт теста! Количество хостов = {len(hosts)}, интервал = {interval} сек.")
     
     while True:
         try:
             # Получаем текущую дату для лога
             current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            logger.info(f"=== Начало проверки ping в {current_time} ===")
+            logger.info(f"  === Начало проверки ping в {current_time} ===")
             
             # Пингуем все хосты
             results = await check_all_hosts(hosts, timeout, count)
@@ -220,12 +220,12 @@ async def monitor_hosts():
                     )
             
             # Ждем указанный интервал перед следующей проверкой
-            logger.info(f"Проверка ping завершена. Следующая проверка через {interval} сек.")
+            logger.info(f" Проверка ping завершена. Следующая проверка через {interval} сек.")
             await asyncio.sleep(interval)
             
         except asyncio.CancelledError:
             # Корректно обрабатываем остановку программы
-            logger.info("Мониторинг остановлен пользователем")
+            logger.info(" Мониторинг остановлен пользователем")
             break
         except Exception as e:
             logger.error(f"Unexpected error: {str(e)}")

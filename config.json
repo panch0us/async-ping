@@ -28,7 +28,7 @@
         "10.18.7.51",
         "10.18.7.52"
     ],
-    "ping_interval": 60,
+    "ping_interval": 300,
     "ping_timeout": 2,
     "ping_count": 2
 }
