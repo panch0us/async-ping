@@ -33,7 +33,7 @@ def setup_logging():
         filename=os.path.join(LOG_DIR, 'ping_monitor.log'),
         when='M',          # Ротация в начале каждого месяца
         interval=1,        # Каждый месяц
-        backupCount=24,    # Хранить логи за 12 месяцев
+        backupCount=24,    # Хранить логи за 24 месяца
         encoding='utf-8'
     )
     
@@ -69,27 +69,7 @@ def load_config() -> Dict:
             "10.19.5.2",
             "10.19.6.177",
             "10.19.11.100",
-            "10.19.33.78",
-            "10.19.3.12",
-            "10.19.11.250",
-            "10.19.18.250",
-            "10.19.23.250",
-            "10.19.22.250",
-            "10.19.32.249",
-            "10.19.33.250",
-            "10.18.7.40",
-            "10.18.7.41",
-            "10.18.7.42",
-            "10.18.7.43",
-            "10.18.7.44",
-            "10.18.7.45",
-            "10.18.7.46",
-            "10.18.7.47",
-            "10.18.7.48",
-            "10.18.7.49",
-            "10.18.7.50",
-            "10.18.7.51",
-            "10.18.7.52",
+            "10.19.33.78"
             ],
         "ping_interval": 300,
         "ping_timeout": 2,
@@ -191,13 +171,13 @@ async def monitor_hosts():
     timeout  = config['ping_timeout']
     count    = config['ping_count']
     
-    logger.info(f"  Старт теста! Количество хостов = {len(hosts)}, интервал = {interval} сек.")
+    logger.info(f"Старт теста! Количество хостов = {len(hosts)}, интервал = {interval} сек.")
     
     while True:
         try:
             # Получаем текущую дату для лога
             current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            logger.info(f"  === Начало проверки ping в {current_time} ===")
+            logger.info(f"=== Начало проверки ping в {current_time} ===")
             
             # Пингуем все хосты
             results = await check_all_hosts(hosts, timeout, count)
@@ -220,12 +200,12 @@ async def monitor_hosts():
                     )
             
             # Ждем указанный интервал перед следующей проверкой
-            logger.info(f" Проверка ping завершена. Следующая проверка через {interval} сек.")
+            logger.info(f"Проверка ping завершена. Следующая проверка через {interval} сек.")
             await asyncio.sleep(interval)
             
         except asyncio.CancelledError:
             # Корректно обрабатываем остановку программы
-            logger.info(" Мониторинг остановлен пользователем")
+            logger.info("Мониторинг остановлен пользователем")
             break
         except Exception as e:
             logger.error(f"Unexpected error: {str(e)}")
