@@ -42,7 +42,7 @@
         }
   ```
 
-- **Run async-ping**:
+- :fire: **Run async-ping**:
 
   После создания образа, например "async-ping:1.0", запуск через docker: 
 
