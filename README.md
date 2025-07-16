@@ -39,7 +39,7 @@
             "ping_interval": 300,
             "ping_timeout": 2,
             "ping_count": 2
-        }
+     }
   ```
 
 - :fire: **Run async-ping**:
