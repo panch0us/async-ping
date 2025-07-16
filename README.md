@@ -11,4 +11,8 @@
 
 ## Features
 
-- :deciduous_tree: **async-ping + logging:** Выполняет пинг к различным клиентам и логгирует всё в файл c разбивкой по месяцам
+- :deciduous_tree: **async-ping + logging** Выполняет пинг к различным клиентам и логгирует всё в файл c разбивкой по месяцам
+
+## Usage
+
+- :rocket: **docker** я зупаскаю так: docker run -d --name async-ping-1.0-container -v /home/user/logs:/app/logs --restart always async-ping:1.0
